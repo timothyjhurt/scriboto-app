@@ -1,0 +1,13 @@
+README.md
+scriboto-app/Scriboto_Record.py
+scriboto-app/Scriboto_Upload.py
+scriboto-app/__init__.py
+scriboto-app/app.py
+scriboto-app/multithreading.py
+scriboto-app/showResults.py
+scriboto_app.egg-info/PKG-INFO
+scriboto_app.egg-info/SOURCES.txt
+scriboto_app.egg-info/dependency_links.txt
+scriboto_app.egg-info/not-zip-safe
+scriboto_app.egg-info/requires.txt
+scriboto_app.egg-info/top_level.txt
