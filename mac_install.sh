@@ -1,4 +1,4 @@
-curl -O https://repo.continuum.io/archive/Anaconda2-5.1.0-MacOSX-x86_64.sh
+curl -O "https://repo.continuum.io/archive/Anaconda2-5.1.0-MacOSX-x86_64.sh"
 bash ./Anaconda2-5.1.0-MacOSX-x86_64.sh
 
 conda update setuptools
