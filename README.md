@@ -2,7 +2,7 @@
 Alpha testing the Scriboto App
 
 
-For Mac Install
+## For Mac Install
 
 Open Terminal
 navigate to your desktop
