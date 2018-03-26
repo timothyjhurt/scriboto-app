@@ -14,7 +14,7 @@ Get an email from Jen Jen that has the apikey.json and drag that file into the f
 
 # To install and run scriboto
 
-## run the following commands from the scriboto-app folder and follow all of the directions of the install:
+## Run the following commands from the scriboto-app folder and follow all of the directions of the install:
 
 cd scriboto-app
 
