@@ -15,7 +15,7 @@ def main():
 
 @app.route('/showResults')
 def showResults():
-	results.showResults("conversation_1.csv")
+	results.showResults(SR.get_name()+".csv")
 	return render_template('results.html')
 
 @app.route('/showHome')
@@ -38,12 +38,12 @@ def startRecording2():
 @app.route('/stopRecording')
 def stopRecording():
 	multi.Stop()
-	SR.record_chunk(RECORD_SECONDS = 1, WAVE_OUTPUT_FILENAME = "endx.wav")
-	SU.upload_blob("forbetatesting", "endx.wav", "endx.wav")
+	SR.record_chunk(RECORD_SECONDS = 1, WAVE_OUTPUT_FILENAME = SR.get_name()+"_x.wav")
+	SU.upload_blob("forbetatesting", SR.get_name()+"_x.wav", SR.get_name()+"_x.wav")
 	a=0
 	while a==0:
 		try:
-			results.showResults("conversation_1.csv")
+			results.showResults(SR.get_name()+".csv")
 			a=1
 		except:
 			time.sleep(5)
