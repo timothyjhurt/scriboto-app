@@ -1,6 +1,7 @@
 import shutil
 from google.cloud import storage
 import pandas as pd
+import time
 
 bucket = "output4ui"
 
@@ -22,10 +23,18 @@ def copyfile():
 
 
 def showResults(filename):
-	#print("here1")
+	print("here1")
 	copyfile()
-	#print("############here2")
-	download_blob(bucket, filename, "labeled_output.csv")
+	print("############here2")
+	filedownloaded = False
+	while not(filedownloaded):
+		try:
+			download_blob(bucket, filename, "labeled_output.csv")
+			filedownloaded = True
+		except:
+			time.sleep(5)
+			print("waiting for output ui file")
+
 	#print("############here3")
 	pd_conversation = pd.read_csv("labeled_output.csv")
 	#print("############here4")
@@ -41,8 +50,14 @@ def showResults(filename):
 	last_section = file_last.read()
 	file_last.close()
 
+	final_sections = []
+
+	for section in ["HPI", "PMH", "Allergies", "Medications", "Family history", "Social history", "PE", "Discharge"]:
+		if section in pd_conversation_section_list:
+			final_sections.append(section)
+
 	file = open('./templates/results.html','a')
-	for key in pd_conversation_section_list:
+	for key in final_sections:
 	    file.write("<h4>" + key + "</h4>")
 	    file.write("<p>" + pd_conversation_section_list[key] + "</p>")
 	    print("key", key)

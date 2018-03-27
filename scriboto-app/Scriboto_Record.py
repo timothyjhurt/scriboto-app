@@ -1,11 +1,16 @@
 import pyaudio
 import wave
 import datetime
+import time
 import math
+import os
 
 #length of chunk in seconds
 chunk_length = 5
-file_name_base = "app_test_"
+try:
+    file_name_base = str(datetime.time).split('.')[0]+str(datetime.time).split('.')[1]+str(os.environ['USERPROFILE'])[-3:]
+except:
+    file_name_base = str(datetime.time).split('.')[0]+str(datetime.time).split('.')[1]+str(os.environ['HOME'])[-3:]
 
 def record_chunk(RECORD_SECONDS = 5, WAVE_OUTPUT_FILENAME = "file.wav"):
     FORMAT = pyaudio.paInt16
@@ -47,7 +52,7 @@ def record_conversation(convo_length = 60*5):
     #print(list_of_filenames)
     for filename in list_of_filenames:
         record_chunk(RECORD_SECONDS = chunk_length, WAVE_OUTPUT_FILENAME = filename)
-    
+
 
 #record_conversation(convo_length =  300)
 

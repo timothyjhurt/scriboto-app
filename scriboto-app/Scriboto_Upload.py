@@ -1,8 +1,3 @@
-#pip3 install google-cloud-storage
-# pip install google-cloud==0.24.0
-
-#ensure you have Google application installed
-#export GOOGLE_APPLICATION_CREDENTIALS="/Users/yannielee/Desktop/W210/W210ScribotoKey.json"
 import datetime
 import os
 from os import listdir
@@ -11,8 +6,8 @@ from google.cloud import storage
 import time
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/api/apikey.json"
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/Users/yannielee/Desktop/W210/W210ScribotoKey.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./api/apikey.json"
+
 bucket = "forbetatesting"
 mypath = "./"
 ignore_files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
