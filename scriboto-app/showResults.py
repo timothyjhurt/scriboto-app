@@ -52,7 +52,7 @@ def showResults(filename):
 
 	final_sections = []
 
-	for section in ["HPI", "PMH", "Allergies", "Medications", "Family history", "Social history", "PE", "Discharge"]:
+	for section in ["HPI", "PMH", "allergies", "medication", "family history", "social history", "PE", "instructions"]:
 		if section in pd_conversation_section_list:
 			final_sections.append(section)
 
