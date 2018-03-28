@@ -8,13 +8,13 @@ import os
 #length of chunk in seconds
 chunk_length = 5
 try:
-    file_name_base = str(datetime.time).split('.')[0]+str(datetime.time).split('.')[1]+str(os.environ['USERPROFILE'])[-3:]
+    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['USERPROFILE'])[-3:]
 except:
-    file_name_base = str(datetime.time).split('.')[0]+str(datetime.time).split('.')[1]+str(os.environ['HOME'])[-3:]
+    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['HOME'])[-3:]
 
 def get_name():
     return file_name_base
-    
+
 def record_chunk(RECORD_SECONDS = 5, WAVE_OUTPUT_FILENAME = "file.wav"):
     FORMAT = pyaudio.paInt16
     CHANNELS = 1
