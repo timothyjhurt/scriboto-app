@@ -7,13 +7,8 @@ import os
 
 #length of chunk in seconds
 chunk_length = 5
-try:
-    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['USERPROFILE'])[-3:]
-except:
-    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['HOME'])[-3:]
 
-def get_name():
-    return file_name_base[:15]
+
 
 def record_chunk(RECORD_SECONDS = 5, WAVE_OUTPUT_FILENAME = "file.wav"):
     FORMAT = pyaudio.paInt16
@@ -51,6 +46,8 @@ def record_chunk(RECORD_SECONDS = 5, WAVE_OUTPUT_FILENAME = "file.wav"):
 def record_conversation(convo_length = 60*5):
     #print("STARTED RECORDING")
     number_of_files = math.ceil(convo_length/chunk_length)
+    f=open('file_name.txt','r')
+    file_name_base=f.read()
     list_of_filenames = [file_name_base + str(index+10) + ".wav" for index in range(number_of_files)]
     #print(list_of_filenames)
     for filename in list_of_filenames:
