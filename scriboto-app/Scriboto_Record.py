@@ -13,7 +13,7 @@ except:
     file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['HOME'])[-3:]
 
 def get_name():
-    return file_name_base
+    return file_name_base[:15]
 
 def record_chunk(RECORD_SECONDS = 5, WAVE_OUTPUT_FILENAME = "file.wav"):
     FORMAT = pyaudio.paInt16
