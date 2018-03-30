@@ -2,7 +2,7 @@
 
 #import _thread as thread
 import time
-import Scriboto_Record as SR 
+import Scriboto_Record as SR
 import Scriboto_Upload as SU
 import multiprocessing as mp
 import random
@@ -18,7 +18,7 @@ def Start():
 	for p in processes:
 		p.daemon = True
 		p.start()
-	    
+
 
 def Start2():
 # Setup a list of processes that we want to run
@@ -26,7 +26,7 @@ def Start2():
 	# Run processes
 	processes[-1].daemon = True
 	processes[-1].start()
-	
+
 def Stop():
 	time.sleep(5)#SR.chunk_length)
 	for p in range(len(processes)):
