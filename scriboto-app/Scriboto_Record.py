@@ -48,7 +48,7 @@ def record_conversation(convo_length = 60*5):
     number_of_files = math.ceil(convo_length/chunk_length)
     f=open('file_name.txt','r')
     file_name_base=f.read()
-    list_of_filenames = [file_name_base + str(index+10) + ".wav" for index in range(number_of_files)]
+    list_of_filenames = [file_name_base + str(index+10) + ".wav" for index in range(int(number_of_files))]
     #print(list_of_filenames)
     for filename in list_of_filenames:
         record_chunk(RECORD_SECONDS = chunk_length, WAVE_OUTPUT_FILENAME = filename)
