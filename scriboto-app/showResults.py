@@ -52,7 +52,7 @@ def showResults(filename):
 
 	final_sections = []
 
-	for section in ["HPI", "PMH", "allergies", "medication", "family history", "social history", "PE", "instructions"]:
+	for section in ["HPI", "PMH", "allergies", "medication", "family history", "social history", "PE", "instructions", "MISC"]:
 		if section in pd_conversation_section_list:
 			final_sections.append(section)
 
@@ -61,7 +61,7 @@ def showResults(filename):
 	    file.write("<h4>" + key + "</h4>")
 	    file.write("<p>" + pd_conversation_section_list[key] + "</p>")
 	    print("key", key)
-	    print(pd_conversation_section_list[key])   
+	    print(pd_conversation_section_list[key])
 
 	file.write(last_section)
 	file.close()
