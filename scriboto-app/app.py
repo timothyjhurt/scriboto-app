@@ -10,9 +10,9 @@ import time
 
 
 try:
-    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['USERPROFILE'])[-3:]
+    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['USERPROFILE']).split("\\")[-1]
 except:
-    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['HOME'])[-3:]
+    file_name_base = str(time.time()).split('.')[0]+str(time.time()).split('.')[1]+str(os.environ['HOME']).split("/")[-1]
 f = open('file_name.txt','w')
 f.write(file_name_base)
 f.close()
@@ -26,7 +26,7 @@ def main():
 
 @app.route('/showResults')
 def showResults():
-	results.showResults(file_name_base[:15]+".csv")
+	results.showResults(file_name_base+".csv")
 	return render_template('results.html')
 
 @app.route('/showHome')
@@ -49,12 +49,12 @@ def startRecording2():
 @app.route('/stopRecording')
 def stopRecording():
 	multi.Stop()
-	SR.record_chunk(RECORD_SECONDS = 1, WAVE_OUTPUT_FILENAME = file_name_base[:15]+"_x.wav")
-	SU.upload_blob("forbetatesting", file_name_base[:15]+"_x.wav", file_name_base[:15]+"_x.wav")
+	SR.record_chunk(RECORD_SECONDS = 1, WAVE_OUTPUT_FILENAME = file_name_base+"_x.wav")
+	SU.upload_blob("forbetatesting", file_name_base+"_x.wav", file_name_base+"_x.wav")
 	a=0
 	while a==0:
 		try:
-			results.showResults(file_name_base[:15]+".csv")
+			results.showResults(file_name_base+".csv")
 			a=1
 		except:
 			time.sleep(5)
