@@ -43,7 +43,7 @@ def record_chunk(RECORD_SECONDS = 5, WAVE_OUTPUT_FILENAME = "file.wav"):
     waveFile.close()
 
 
-def record_conversation(convo_length = 60*5):
+def record_conversation(convo_length = 60*15):
     #print("STARTED RECORDING")
     number_of_files = math.ceil(convo_length/chunk_length)
     f=open('file_name.txt','r')
