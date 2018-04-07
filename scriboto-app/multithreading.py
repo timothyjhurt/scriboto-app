@@ -20,22 +20,17 @@ def Start():
 		p.start()
 
 
-def Start2():
-# Setup a list of processes that we want to run
-	processes.append(mp.Process(target=SR.record_conversation, args=(), name='Recording'))
-	# Run processes
-	processes[-1].daemon = True
-	processes[-1].start()
-
 def Stop():
-	time.sleep(5)#SR.chunk_length)
+	time.sleep(5) #SR.chunk_length
 	for p in range(len(processes)):
 		if p == 1:
 			processes[p].terminate()
-	#terminate()
-# Get process results from the output queue
-#results = [output.get() for p in processes]
 
-#Start()
+def terminate_remaining():
+	global processes
+	for p in range(len(processes)):
+		processes[p].terminate()
+	processes = []
+
 
 print("MThreading Loaded And Done")
