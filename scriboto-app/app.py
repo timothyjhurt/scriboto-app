@@ -1,3 +1,4 @@
+#NEW
 #https://code.tutsplus.com/tutorials/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972
 from flask import Flask, render_template
 from flask import g
@@ -7,6 +8,7 @@ import Scriboto_Record as SR
 import Scriboto_Upload as SU
 import os
 import time
+import doctor_Speak as DoctorSpeak
 
 
 app = Flask(__name__)
@@ -57,6 +59,12 @@ def stopRecording():
     multi.terminate_remaining()
     return render_template('results.html')
 
+@app.route('/drSpeak')
+def drSpeak():
+    print("Starting Doctor Speak")
+    DoctorSpeak.showResultsDrSpeak()
+    print("Finished creating Doctor Speak File")
+    return render_template('results_drSpeak.html')
 
 if __name__ == "__main__":
     app.run()
