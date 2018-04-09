@@ -42,6 +42,7 @@ def Convert_To_Doctor_Speak(convo_df):
         print("SENTENCE: ", convo_df[i])
         
         for word in convo_df[i].split():
+            print("HEREEEEE", word)
             # clean up strings
             word = word.strip(punctuation)
             word = word.replace("_", " ")
@@ -67,7 +68,8 @@ def Convert_To_Doctor_Speak(convo_df):
             # take out unecessary words
             if "I'm" in EHR_sent:
                     EHR_sent.remove("I'm")
-            Doctor_Speak_Results.append(" ".join(EHR_sent))
+        print("appending this:", EHR_sent)
+        Doctor_Speak_Results.append(" ".join(EHR_sent))
     df_final = pd.DataFrame(Doctor_Speak_Results)
     print("successfully converted", df_final.head())
     return df_final
@@ -94,6 +96,7 @@ def showResultsDrSpeak():
         new_pd = pd_conversation[pd_conversation["predicted_label"] == section]
         print("Here 1b", new_pd.columns.values, new_pd.head(), "here", new_pd[0])
         pd_conversation_section_list[section] = new_pd[0].str.cat(sep=' <br> ')
+        print(pd_conversation_section_list[section])
 
     print("fixed")
     file_last = open('results_bottom.html','r')
