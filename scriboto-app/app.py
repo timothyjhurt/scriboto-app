@@ -9,8 +9,10 @@ import Scriboto_Upload as SU
 import os
 import time
 import doctor_Speak as DoctorSpeak
-from importlib import reload
-
+try:
+	from importlib import reload
+except:
+	continue
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
