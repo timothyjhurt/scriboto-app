@@ -32,6 +32,7 @@ def terminate_remaining():
 		if p==0:
 			processes[p].terminate()
 	time.sleep(.3)
+	processes = []
 
 
 print("MThreading Loaded And Done")
