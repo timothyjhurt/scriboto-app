@@ -29,8 +29,9 @@ def Stop():
 def terminate_remaining():
 	global processes
 	for p in range(len(processes)):
-		processes[p].terminate()
-	processes = []
+		if p==0:
+			processes[p].terminate()
+	time.sleep(.3)
 
 
 print("MThreading Loaded And Done")
