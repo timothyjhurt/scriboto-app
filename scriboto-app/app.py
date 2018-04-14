@@ -12,7 +12,7 @@ import doctor_Speak as DoctorSpeak
 try:
 	from importlib import reload
 except:
-	pass 
+	pass
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -30,6 +30,7 @@ def showResults():
 
 @app.route('/showHome')
 def showHome():
+	reload(multi)
 	reload(SR)
 	return render_template('indexStart.html')
 
