@@ -12,7 +12,7 @@ import doctor_Speak as DoctorSpeak
 try:
 	from importlib import reload
 except:
-	continue
+	pass 
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
