@@ -2,16 +2,20 @@ import pandas as pd
 import time
 from string import punctuation
 
+# Read in medications
+med_df = pd.read_csv("drugs_84566.csv")
+# Read in body parts
+body_df = pd.read_csv("body_part_66144_union.csv")
 
 
 def Convert_To_Doctor_Speak(convo_df):
 
 	convo_df = convo_df["sentence"]
-	print("Converting to Doctor Speak", convo_df.shape, convo_df.head())
+	# print("Converting to Doctor Speak", convo_df.shape, convo_df.head())
 
 	# Read in clinical findings
 	clinical_df = pd.read_csv("finding.csv")
-	print(clinical_df.head())
+	# print(clinical_df.head())
 	# Read in stopwords
 	stop_words = ['i', 'me', 'my', 'myself','we','our','ours','ourselves','you','you\'re','you\'ve','you\'ll',\
 	'you\'d','your','yours','yourself','yourselves','he','him','his','himself','she','she\'s',\
@@ -28,10 +32,10 @@ def Convert_To_Doctor_Speak(convo_df):
 	'haven','haven\'t','isn','isn\'t','ma','mightn','mightn\'t','mustn','mustn\'t','needn',\
 	'needn\'t','shan','shan\'t','shouldn','shouldn\'t','wasn','wasn\'t','weren','weren\'t',\
 	'won','won\'t','wouldn','wouldn\'t']
-	# Read in medications
-	med_df = pd.read_csv("drugs_84566.csv")
-	# Read in body parts
-	body_df = pd.read_csv("body_part_66144_union.csv")
+	# # Read in medications
+	# med_df = pd.read_csv("drugs_84566.csv")
+	# # Read in body parts
+	# body_df = pd.read_csv("body_part_66144_union.csv")
 
 	timing = ['seconds', 'sec', 'second', 'minute', 'min', 'minutes', 'hour', 'hours', 'hr', 'wk', 'week', 'weeks', 'mo', 'month', 'months', 'yr', 'year', 'years']
 
@@ -39,7 +43,7 @@ def Convert_To_Doctor_Speak(convo_df):
 	for i in range(convo_df.shape[0]):
 
 		EHR_sent = []
-		print("SENTENCE: ", convo_df[i])
+		# print("SENTENCE: ", convo_df[i])
 
 		for word in convo_df[i].split():
 			print("HEREEEEE", word)
@@ -51,8 +55,9 @@ def Convert_To_Doctor_Speak(convo_df):
 			for letter in word:
 				word_bracket = word_bracket + '[' + letter + ']'
 				# pass over stop words
-			if word in stop_words:
-				continue
+			if word.lower() in stop_words:
+				print(word)
+				word=' '
 			# extract timing words
 			elif word in timing:
 				EHR_sent.append(word)
@@ -67,11 +72,11 @@ def Convert_To_Doctor_Speak(convo_df):
 				EHR_sent.append(word)
 			# take out unecessary words
 			if "I'm" in EHR_sent:
-					EHR_sent.remove("I'm")
-		print("appending this:", EHR_sent)
+				EHR_sent.remove("I'm")
+		# print("appending this:", EHR_sent)
 		Doctor_Speak_Results.append(" ".join(EHR_sent))
 	df_final = pd.DataFrame(Doctor_Speak_Results)
-	print("successfully converted", df_final.head())
+	# print("successfully converted", df_final.head())
 	return df_final
 
 
@@ -81,7 +86,7 @@ def showResultsDrSpeak():
 	print("Loading labeled output")
 	pd_conversation_input = pd.read_csv("labeled_output.csv")
 	pd_conversation = Convert_To_Doctor_Speak(pd_conversation_input)
-	print("Finished Converting labeled output")
+	# print("Finished Converting labeled output")
 	pd_conversation["predicted_label"] = pd_conversation_input["predicted_label"]
 
 	print(pd_conversation.head())
