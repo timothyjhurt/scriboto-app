@@ -64,6 +64,7 @@ def record_conversation(convo_length = 60*15):
 	number_of_files = math.ceil(convo_length/chunk_length)
 	f=open('file_name.txt','r')
 	file_name_base=f.read()
+	f.close()
 	list_of_filenames = [file_name_base + str(index+10) + ".wav" for index in range(int(number_of_files))]
 	#print(list_of_filenames)
 	for filename in list_of_filenames:
