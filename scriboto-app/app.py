@@ -54,6 +54,7 @@ def stopRecording():
 	f=open('file_name.txt','r')
 	file_name_base=f.read()
 	f.close()
+	time.sleep(1)
 	SR.record_chunk(RECORD_SECONDS = 1, WAVE_OUTPUT_FILENAME = file_name_base+"_x.wav")
 	SU.upload_blob("forbetatesting", file_name_base+"_x.wav", file_name_base+"_x.wav")
 	a=0
