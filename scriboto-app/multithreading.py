@@ -4,35 +4,26 @@
 import time
 import Scriboto_Record as SR
 import Scriboto_Upload as SU
-import multiprocessing as mp
+# import multiprocessing as mp
+import threading
 import random
 import string
-
-
+import config
 
 def Start():
 # Setup a list of processes that we want to run
-	global processes
-	processes = []
-	processes.append(mp.Process(target=SU.scriboto_upload_files, args=(), name='Upload'))
-	processes.append(mp.Process(target=SR.record_conversation, args=(), name='Recording'))
+	upload_thread = threading.Thread(target=SU.scriboto_upload_files)
+	record_thread = threading.Thread(target=SR.record_conversation)
 	# Run processes
-	for p in processes:
-		p.daemon = True
-		p.start()
-
+	upload_thread.start()
+	record_thread.start()
 
 def Stop():
-	time.sleep(5) #SR.chunk_length
-	for p in range(len(processes)):
-		if p == 1:
-			processes[p].terminate()
+	time.sleep(6) #SR.chunk_length
+	config.record_const=1
 
 def terminate_remaining():
-	for p in range(len(processes)):
-		if p==0:
-			processes[p].terminate()
+	config.upload_const=1
 	time.sleep(.3)
-
 
 print("MThreading Loaded And Done")
