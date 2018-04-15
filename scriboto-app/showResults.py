@@ -86,6 +86,8 @@ def Convert_To_Doctor_Speak(convo_df):
 			elif (med_df['term'].str.contains(r'\b' + word_bracket + r'\b')).any() == True:
 				EHR_sent.append(word)
 			# take out unecessary words
+			else:
+				pass
 			if "I'm" in EHR_sent:
 					EHR_sent.remove("I'm")
 		Doctor_Speak_Results.append(" ".join(EHR_sent))
@@ -115,9 +117,15 @@ def generateResultsDrSpeak():
 		print("********Here 1c********", section, pd_conversation_section_list[section]=="")
 
 	final_sections = []
+	full_names=['History of Present Illness (HPI)', 'Past Medical History (PMH)',"Allergies", 'Medication',"Family History",\
+	"Social History","Physical Examination (PE)","Instructions","Miscellaneous"]
+	sections=["HPI", "PMH", "allergies", "medication", "family history", "social history", "PE", "instructions", "MISC"]
+	combined=[]
+	for i in range(len(full_names)):
+		combined.append((sections[i], full_names[i]))
 
-	for section in ["HPI", "PMH", "allergies", "medication", "family history", "social history", "PE", "instructions", "MISC"]:
-		if section in pd_conversation_section_list:
+	for section in combined:
+		if section[0] in pd_conversation_section_list:
 			final_sections.append(section)
 
 	return final_sections, pd_conversation_section_list
@@ -143,9 +151,15 @@ def showResults(filename):
 		pd_conversation_section_list[section] = new_pd["sentence"].str.cat(sep=' <br> ')
 
 	final_sections = []
+	full_names=['History of Present Illness (HPI)', 'Past Medical History (PMH)',"Allergies", 'Medication',"Family History",\
+	"Social History","Physical Examination (PE)","Instructions","Miscellaneous"]
+	sections=["HPI", "PMH", "allergies", "medication", "family history", "social history", "PE", "instructions", "MISC"]
+	combined=[]
+	for i in range(len(full_names)):
+		combined.append((sections[i], full_names[i]))
 
-	for section in ["HPI", "PMH", "allergies", "medication", "family history", "social history", "PE", "instructions", "MISC"]:
-		if section in pd_conversation_section_list:
+	for section in combined:
+		if section[0] in pd_conversation_section_list:
 			final_sections.append(section)
 
 
@@ -161,21 +175,29 @@ def showResults(filename):
 
 	file = open('./templates/results.html','w')
 	file.write(first_section)
+
+	# for key in final_sections:
+	# 	file.write("<h5>" + key + "</h5>")
+	# 	file.write("<p class=\"w3-text-grey\">" + pd_conversation_section_list[key] + "</p>")
+	# 	print("key", key)
+	# 	print(pd_conversation_section_list[key])
+	# file.write(middle_section)
+
 	for key in final_sections:
-		file.write("<h5>" + key + "</h5>")
-		file.write("<p class=\"w3-text-grey\">" + pd_conversation_section_list[key] + "</p>")
-		print("key", key)
-		print(pd_conversation_section_list[key])
+		file.write("<h5>" + key[1] + "</h5>")
+		file.write("<p class=\"w3-text-grey\">" + pd_conversation_section_list[key[0]] + "</p>")
+		print("key", key[1])
+		print(pd_conversation_section_list[key[0]])
 	file.write(middle_section)
 
 	final_sections_dr_speak, pd_conversation_section_list_dr_speak = generateResultsDrSpeak()
 
 	for key in final_sections_dr_speak:
-		if pd_conversation_section_list_dr_speak[key] != "":
-			file.write("<h5>" + key + "</h5>")
-			file.write("<p class=\"w3-text-grey\">" + pd_conversation_section_list_dr_speak[key] + "</p>")
-			print("key", key)
-			print(pd_conversation_section_list_dr_speak[key])
+		if pd_conversation_section_list_dr_speak[key[0]] != "":
+			file.write("<h5>" + key[1] + "</h5>")
+			file.write("<p class=\"w3-text-grey\">" + pd_conversation_section_list_dr_speak[key[0]] + "</p>")
+			print("key", key[1])
+			print(pd_conversation_section_list_dr_speak[key[0]])
 
 	file.write(bottom_section)
 	file.close()
