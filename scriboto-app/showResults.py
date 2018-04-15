@@ -5,6 +5,9 @@ import time
 from string import punctuation
 
 bucket = "output4ui"
+med_df = pd.read_csv("drugs_84566.csv")
+# Read in body parts
+body_df = pd.read_csv("body_part_66144_union.csv")
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
 	"""Downloads a blob from the bucket."""
@@ -42,11 +45,14 @@ def Convert_To_Doctor_Speak(convo_df):
 	'needn\'t','shan','shan\'t','shouldn','shouldn\'t','wasn','wasn\'t','weren','weren\'t',\
 	'won','won\'t','wouldn','wouldn\'t']
 	# Read in medications
-	med_df = pd.read_csv("drugs_84566.csv")
-	# Read in body parts
-	body_df = pd.read_csv("body_part_66144_union.csv")
+	# med_df = pd.read_csv("drugs_84566.csv")
+	# # Read in body parts
+	# body_df = pd.read_csv("body_part_66144_union.csv")
 
-	timing = ['seconds', 'sec', 'second', 'minute', 'min', 'minutes', 'hour', 'hours', 'hr', 'wk', 'week', 'weeks', 'mo', 'month', 'months', 'yr', 'year', 'years']
+	timing = ['seconds', 'sec', 'second', 'minute', 'min', 'minutes', 'hour',\
+	'hours', 'hr', 'wk', 'week', 'weeks', 'mo', 'month', 'months', 'yr', 'year',\
+	 'years','1','2','3','4','5','6','7','8','9','0','one','two','three','four',\
+	 'five','six','seven','eight','nine','ten']
 
 	Doctor_Speak_Results = []
 	for i in range(convo_df.shape[0]):
@@ -62,11 +68,14 @@ def Convert_To_Doctor_Speak(convo_df):
 			for letter in word:
 				word_bracket = word_bracket + '[' + letter + ']'
 				# pass over stop words
-			if word in stop_words:
-				continue
+			if word.lower() in stop_words:
+				pass
 			# extract timing words
 			elif word in timing:
 				EHR_sent.append(word)
+			# make sure the word is longer than 4 letters
+			elif len(word)<5:
+				pass
 			# extract clinical entities
 			elif (clinical_df['term'].str.contains(r'\b' + word_bracket + r'\b')).any() == True:
 				EHR_sent.append(word)
