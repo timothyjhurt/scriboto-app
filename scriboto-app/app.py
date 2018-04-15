@@ -19,7 +19,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 @app.route("/")
 def main():
-	return render_template('indexStart.html')
+	return render_template('Start.html')
 
 @app.route('/showResults')
 def showResults():
@@ -33,7 +33,7 @@ def showResults():
 def showHome():
 	reload(multi)
 	reload(SR)
-	return render_template('indexStart.html')
+	return render_template('Start.html')
 
 @app.route('/startRecording')
 def startRecording():
@@ -45,7 +45,7 @@ def startRecording():
 	f.write(file_name_base)
 	f.close()
 	multi.Start()
-	return render_template('indexStop.html')
+	return render_template('Stop.html')
 
 
 @app.route('/stopRecording')
@@ -66,12 +66,9 @@ def stopRecording():
 	multi.terminate_remaining()
 	return render_template('results.html')
 
-@app.route('/drSpeak')
-def drSpeak():
-	print("Starting Doctor Speak")
-	DoctorSpeak.showResultsDrSpeak()
-	print("Finished creating Doctor Speak File")
-	return render_template('results_drSpeak.html')
+def showProcessing():
+	return render_template('Processing.html')
+
 
 if __name__ == "__main__":
 	app.run()

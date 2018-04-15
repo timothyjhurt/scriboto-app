@@ -1,37 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Scriboto App Results</title>
-
-
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-
-
-</head>
-
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+}
+.bgimg {
+    background-position: top;
+    background-size: cover;
+    background-image: url("./static/doctor1.png");
+    min-height: 75%;
+}
+.menu {
+    display: none;
+}
+</style>
 <body>
 
-    <div class="container">
-        <div class="header">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a>
-                    </li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Scriboto App User Interface - EHR Summary</h3>
-        </div>
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s5">
+      <a href="showHome" role="button" class="w3-button w3-block w3-black">HOME</a>
+    </div>
+  </div>
+</div>
 
-        <div class="jumbotron">
-            <h1>Scriboto App</h1>
-            <p class="lead"></p>
-            <p><a class="btn btn-lg btn-success" href="showHome" role="button">Return Home</a>
-            <p><a class="btn btn-lg btn-success" href="drSpeak" role="button">Doctor Speak</a>
-            </p>
-        </div>
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center">
+    <span class=Black style="font-size:90px">Scriboto</span>
+  </div>
+</header>
 
-        <div class="row marketing">
-            <div class="col-lg-6">
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Results</span></h5>
+  
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Transcription');" id="myLink">
+        <div class="w3-col s6 tablink">Transcription</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Doctor Speak');">
+        <div class="w3-col s6 tablink">Doctor Speak</div>
+      </a>
+    </div>
+
+    <div id="Transcription" class="w3-container menu w3-padding-48 w3-card">
+      
