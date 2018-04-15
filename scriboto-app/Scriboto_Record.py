@@ -4,7 +4,10 @@ import datetime
 import time
 import math
 import os
-
+try:
+	from importlib import reload
+except:
+	pass
 #length of chunk in seconds
 chunk_length = 5
 
@@ -22,6 +25,8 @@ def record_chunk(RECORD_SECONDS = 5, WAVE_OUTPUT_FILENAME = "file.wav"):
 		numdevices = info.get('deviceCount')
 		if str(numdevices)[0]!='0':
 			a=1
+		else:
+			reload(pyaudio)
 		print("Number of Devices ", numdevices)
 	# for i in range(0, numdevices):
 	#     if (audio.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
