@@ -27,6 +27,12 @@ body, html {height: 100%}
     cursor: pointer;
 }
 </style>
+<script>
+function myFunction() {
+  document.getElementById("stop").style.display = "none";
+  document.getElementById("listening").innerHTML="Scriboto is Processing";
+}
+</script>
 <body>
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
@@ -36,8 +42,8 @@ body, html {height: 100%}
   <div class="w3-display-middle"; style="text-align:center;">
     <h1 class="w3-jumbo w3-animate-top"; style="color:black;">SCRIBOTO</h1>
     <hr class="w3-border-grey" style="margin:auto;width:40%">
-    <p class="w3-large w3-center"; style="color:Black;">We are listening...</p>
-    <p><a class="button" href="stopRecording" role="button">Stop Recording</a>
+    <p id="listening" class="w3-large w3-center"; style="color:Black;">We are listening...</p>
+    <p><a id="stop" onclick="myFunction()" class="button" href="stopRecording" role="button">Stop Recording</a>
   </div>
 </div>
 
