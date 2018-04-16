@@ -8,6 +8,7 @@ bucket = "output4ui"
 med_df = pd.read_csv("drugs_84566.csv")
 # Read in body parts
 body_df = pd.read_csv("body_part_66144_union.csv")
+clinical_df = pd.read_csv("finding.csv")
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
 	"""Downloads a blob from the bucket."""
@@ -27,7 +28,7 @@ def Convert_To_Doctor_Speak(convo_df):
 	print("-----Converting to Doctor Speak-----", convo_df.shape, convo_df.head())
 
 	# Read in clinical findings
-	clinical_df = pd.read_csv("finding.csv")
+	# clinical_df = pd.read_csv("finding.csv")
 	# Read in stopwords
 	stop_words = ['i', 'me', 'my', 'myself','we','our','ours','ourselves','you','you\'re','you\'ve','you\'ll',\
 	'you\'d','your','yours','yourself','yourselves','he','him','his','himself','she','she\'s',\
@@ -132,6 +133,7 @@ def generateResultsDrSpeak():
 
 def showResults(filename):
 	filedownloaded = False
+	counter_error=0
 	while not(filedownloaded):
 		try:
 			download_blob(bucket, filename, "labeled_output.csv")
@@ -139,6 +141,10 @@ def showResults(filename):
 		except:
 			time.sleep(5)
 			print("waiting for output ui file")
+			counter_error+=1
+			if counter_error>15:
+				download_blob(bucket, "error_message.csv", "labeled_output.csv")
+				filedownloaded = True
 
 	pd_conversation = pd.read_csv("labeled_output.csv")
 
