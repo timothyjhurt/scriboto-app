@@ -14,8 +14,8 @@ body, html {
 .bgimg {
     background-position: top;
     background-size: cover;
-    background-image: url("./static/doctor1.png");
-    min-height: 75%;
+    /* background-image: url("./static/doctor1.png"); */
+    min-height: 350px;
 }
 .menu {
     display: none;
@@ -32,21 +32,31 @@ body, html {
   </div>
 </div>
 
+
+
+<!-- <div class="bgimg w3-display-container w3-animate-opacity w3-text-white"> -->
+
 <!-- Header with image -->
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-padding-large w3-xlarge">
+    <img src="../static/scriboto_logo.png" alt="Scriboto Robot Logo" height="280" width="280">
+  </div>
   <div class="w3-display-middle w3-center">
-    <span class=Black style="font-size:90px">Scriboto</span>
+    <h1 class="w3-jumbo w3-animate-top"; style="color:black;">SCRIBOTO</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <!-- <p class="w3-xlarge w3-center"; style="color:Black;">Scroll Down to See the Results</p> -->
   </div>
 </header>
 
 <!-- Add a background color and large text to the whole page -->
-<div class="w3-sand w3-grayscale w3-large">
+<!-- <div class="w3-sand w3-white w3-large"> -->
+<div class="w3-sand w3-grayscale w3-large">  
 
 <!-- Menu Container -->
 <div class="w3-container" id="menu">
   <div class="w3-content" style="max-width:700px">
 
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Results</span></h5>
+    <h3 class="w3-center w3-padding-large"><span class="w3-tag w3-wide w3-dark-grey">Results</span></h3>
 
     <div class="w3-row w3-center w3-card w3-padding">
       <a href="javascript:void(0)" onclick="openMenu(event, 'Transcription');" id="myLink">
