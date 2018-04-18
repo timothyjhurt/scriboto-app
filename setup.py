@@ -12,7 +12,6 @@ setup(name='scriboto-app',
           'google-cloud-storage',
           'PyAudio',
           'pandas',
-          'multiprocessing',
           'Flask',
       ],
       zip_safe=False)
