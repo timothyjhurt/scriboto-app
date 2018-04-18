@@ -1,4 +1,4 @@
-# scriboto-app
+# Scriboto ![alt text](https://github.com/timothyjhurt/scriboto-app/blob/master/scriboto-app/static/scriboto_logo.png "Scriboto")
 Alpha testing the Scriboto App
 
 ### Thank you for your interest in Scriboto! Scriboto is a Data Science application being developed to save Doctors time, and improve Doctor-Patient relationships.
@@ -19,5 +19,4 @@ Step #|Installing on a Mac|Installing on a Windows PC
 6| Open a web browser and navigate to http://127.0.0.1:5000 | Open a web browser and navigate to http://127.0.0.1:5000
 7| To begin your conversation, press the "Start Recording Button"|To begin your conversation, press the "Start Recording Button"
 
-Scriboto was designed to help categorize portions of a clinical conversation. Clinical conversation are usually rather long and usually include medical terms, descriptions of symptoms, and language related to health. If you want to test how well Scriboto performs, you should try to emulate a clinical conversation as best you can. However, it is important to remember that Scriboto is still being developed so it is wise to assume that your data could be compromised. 
-  
+Scriboto was designed to help categorize portions of a clinical conversation. Clinical conversations are rather long and include medical terms, descriptions of symptoms, and language related to health. In order to evaluate how well Scriboto performs, you should try to emulate a clinical conversation as best you can. However, it is important to remember that Scriboto is still being developed so it is wise to assume that your data could be compromised.
