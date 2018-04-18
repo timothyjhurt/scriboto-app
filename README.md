@@ -11,25 +11,11 @@ If you already have Anaconda2, please run `conda update anaconda` before trying 
 
 Step #|Installing on a Mac|Installing on a Windows PC
 ---|---|---
-1| Choose a directory to work out of and run: 
-`git clone https://github.com/timothyjhurt/scriboto-app.git`|Choose a directory to work out of and run: 
-`git clone https://github.com/timothyjhurt/scriboto-app.git`
+1| Choose a directory to work out of and run:<br/>`git clone https://github.com/timothyjhurt/scriboto-app.git`|Choose a directory to work out of and run:<br/>`git clone https://github.com/timothyjhurt/scriboto-app.git`
 2| Email scriboto@gmail.com to request access to a google API key for the Scriboto App | Email scriboto@gmail.com to request access to a google API key for the Scriboto App
-3| Move the json key to the directory 
-`scriboto-app/scriboto-app/api/`|Move the json key to the directory 
-`scriboto-app\scriboto-app\api\`
-4| From Terminal, navigate to 
-`\scriboto-app` and run: 
-`bash mac_install.sh`| Open Anaconda Prompt navigate to 
-`\scriboto-app` 
-and run the following commands: 
-`conda update setuptools`, 
-`python pip install -e .`, 
-`cd scriboto-app`, 
-`set FLASK_APP=app.py`
-5| Once you are ready to test Scriboto, run: 
-`python -m flask run` | Once you are ready to test Scriboto, run: 
-`python -m flask run`
+3| Move the json key to the directory<br/>`scriboto-app/scriboto-app/api/`|Move the json key to the directory<br/>`scriboto-app\scriboto-app\api\`
+4| From Terminal, navigate to<br/>`\scriboto-app` and run:<br/>`bash mac_install.sh`| Open Anaconda Prompt navigate to<br/>`\scriboto-app` and run the following commands:<br/>`conda update setuptools`<br/>`python pip install -e .`<br/>`cd scriboto-app`<br/>`set FLASK_APP=app.py`
+5| Once you are ready to test Scriboto, run:<br/>`python -m flask run` | Once you are ready to test Scriboto, run:<br/>`python -m flask run`
 6| Open a web browser and navigate to http://127.0.0.1:5000 | Open a web browser and navigate to http://127.0.0.1:5000
 7| To begin your conversation, press the "Start Recording Button"|To begin your conversation, press the "Start Recording Button"
 
