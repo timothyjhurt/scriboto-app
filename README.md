@@ -7,9 +7,9 @@ Alpha testing the Scriboto App
 
 <br/>
 
-In order to ensure all of the python packages and dependencies work properly for Scriboto please download and install the most up-to-date Anaconda Distribution for Python 2.7 from https://www.anaconda.com/download/
+In order to ensure all of the python packages and dependencies work properly for Scriboto please download and install the most up-to-date Anaconda Distribution for Python 2.7 or Python 3.6 from https://www.anaconda.com/download/
 
-If you already have Anaconda2, please run `conda update anaconda` before trying to install Scriboto.
+If you already have Anaconda, please run `conda update anaconda` before trying to install Scriboto.
 
 Step #|Installing on a Mac|Installing on a Windows PC
 ---|---|---
