@@ -3,3 +3,4 @@
 conda update setuptools #
 pip install -e . #
 cd scriboto-app #
+export FLASK_APP=app.py #
