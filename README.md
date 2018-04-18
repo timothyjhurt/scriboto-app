@@ -1,4 +1,5 @@
-# Scriboto ![alt text](https://github.com/timothyjhurt/scriboto-app/blob/master/scriboto-app/static/scriboto_logo.png "Scriboto" =40x40)
+# Scriboto 
+<img src="https://github.com/timothyjhurt/scriboto-app/blob/master/scriboto-app/static/scriboto_logo.png" alt="Scriboto Robot" width="40px" height="40px">
 Alpha testing the Scriboto App
 
 ### Thank you for your interest in Scriboto! Scriboto is a Data Science application being developed to save Doctors time, and improve Doctor-Patient relationships.
