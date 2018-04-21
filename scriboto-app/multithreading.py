@@ -19,11 +19,7 @@ def Start():
 	record_thread.start()
 
 def Stop():
-	time.sleep(6) #SR.chunk_length
 	config.record_const=1
 
-def terminate_remaining():
-	config.upload_const=1
-	time.sleep(.3)
 
 print("MThreading Loaded And Done")

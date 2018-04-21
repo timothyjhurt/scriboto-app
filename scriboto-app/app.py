@@ -54,17 +54,16 @@ def stopRecording():
 	f=open('file_name.txt','r')
 	file_name_base=f.read()
 	f.close()
-	time.sleep(5)
-	SR.record_chunk(RECORD_SECONDS = 1, WAVE_OUTPUT_FILENAME = file_name_base+"_x.wav")
-	SU.upload_blob("forbetatesting", file_name_base+"_x.wav", file_name_base+"_x.wav")
-	multi.terminate_remaining()
+	# time.sleep(6)
+	# SR.record_chunk(RECORD_SECONDS = 1, WAVE_OUTPUT_FILENAME = file_name_base+"_x.wav")
+	# SU.upload_blob("forbetatesting", file_name_base+"_x.wav", file_name_base+"_x.wav")
 	a=0
 	while a==0:
 		try:
 			results.showResults(file_name_base+".csv")
 			a=1
 		except:
-			time.sleep(3)
+			time.sleep(1)
 	return render_template('results.html')
 
 def showProcessing():

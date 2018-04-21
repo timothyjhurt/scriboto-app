@@ -40,7 +40,9 @@ def upload_files():
 				file_to_upload = file_to_upload + 1
 			elif str(current_file) == file_name + "_x.wav":
 				upload_blob(bucket, current_file, current_file)
+				ignore_files.append(current_file)
 				file_to_upload = 10
+				config.upload_const=1
 				print("*** finished uploading file", file_to_upload)
 
 def scriboto_upload_files():
@@ -49,7 +51,7 @@ def scriboto_upload_files():
 	while True:
 		if config.upload_const==0:
 			upload_files()
-			time.sleep(15)
+			time.sleep(4)
 		else:
 			print('upload stopped')
 			return
